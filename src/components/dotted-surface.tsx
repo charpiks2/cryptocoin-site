@@ -17,7 +17,6 @@ export function DottedSurface({
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
-    animationId: number;
   } | null>(null);
 
   useEffect(() => {
@@ -89,45 +88,39 @@ export function DottedSurface({
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    let count = 0;
-    let animationId = 0;
+    const positionAttribute = geometry.attributes.position;
+    const positionArray = positionAttribute.array as Float32Array;
 
-    const animate = () => {
-      animationId = requestAnimationFrame(animate);
-
-      const positionAttribute = geometry.attributes.position;
-      const positionArray = positionAttribute.array as Float32Array;
-
-      let i = 0;
-      for (let ix = 0; ix < amountX; ix += 1) {
-        for (let iy = 0; iy < amountY; iy += 1) {
-          const index = i * 3;
-          positionArray[index + 1] =
-            Math.sin((ix + count) * 0.3) * 50 +
-            Math.sin((iy + count) * 0.5) * 50;
-          i += 1;
-        }
+    let i = 0;
+    for (let ix = 0; ix < amountX; ix += 1) {
+      for (let iy = 0; iy < amountY; iy += 1) {
+        const index = i * 3;
+        positionArray[index + 1] =
+          Math.sin(ix * 0.3) * 50 + Math.sin(iy * 0.5) * 50;
+        i += 1;
       }
+    }
 
-      positionAttribute.needsUpdate = true;
+    positionAttribute.needsUpdate = true;
+
+    const renderScene = () => {
       renderer.render(scene, camera);
-      count += 0.1;
     };
 
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
+      renderScene();
     };
 
     window.addEventListener("resize", handleResize);
-    animate();
+    renderScene();
 
     sceneRef.current = {
       scene,
       camera,
       renderer,
-      animationId,
     };
 
     return () => {
@@ -136,8 +129,6 @@ export function DottedSurface({
       if (!sceneRef.current) {
         return;
       }
-
-      cancelAnimationFrame(animationId);
 
       sceneRef.current.scene.traverse((object) => {
         if (!(object instanceof THREE.Points)) {

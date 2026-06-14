@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React, { useState } from "react";
 
 const navLinksData = [
@@ -23,7 +24,7 @@ export function HeroNavbar() {
 
   return (
     <header
-      className={`glass-panel fixed top-4 left-1/2 z-30 flex w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2 flex-col border border-white/10 px-4 py-3 transition-[border-radius] duration-200 ease-in-out sm:w-[calc(100%-2rem)] sm:px-5 ${headerShapeClass}`}
+      className={`fixed top-4 left-1/2 z-30 flex w-[calc(100%-1.5rem)] max-w-5xl -translate-x-1/2 flex-col border border-white/10 bg-[rgba(16,18,26,0.58)] px-4 py-3 shadow-[0_24px_70px_rgba(0,0,0,0.38)] backdrop-blur-xl transition-[border-radius] duration-200 ease-in-out sm:w-[calc(100%-2rem)] sm:px-5 ${headerShapeClass}`}
     >
       <div className="flex items-center justify-between gap-x-6">
         <div className="flex items-center gap-3">
@@ -38,31 +39,34 @@ export function HeroNavbar() {
           </div>
         </div>
 
-        <nav className="hidden items-center gap-2 sm:flex">
+        <nav className="hidden items-center gap-3 sm:flex">
           {navLinksData.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-white/80 transition hover:bg-white/10 hover:text-white"
+              className="group relative inline-flex h-7 items-center overflow-hidden rounded-full px-3 text-xs font-medium uppercase tracking-[0.18em] text-white/74 transition hover:bg-white/6 hover:text-white sm:px-4"
             >
-              {link.label}
+              <span className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
+                <span className="block leading-7">{link.label}</span>
+                <span className="block leading-7 text-white">{link.label}</span>
+              </span>
             </a>
           ))}
         </nav>
 
         <div className="hidden items-center gap-2 sm:flex">
-          <a
-            href="#site-footer"
-            className="rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-white/80 transition hover:bg-white/10 hover:text-white"
+          <Link
+            href="/404"
+            className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-white/78 transition hover:border-white/18 hover:bg-white/10 hover:text-white"
           >
             Обратная связь
-          </a>
-          <a
-            href="#hero-video"
-            className="rounded-full border border-emerald-400/35 bg-emerald-400/14 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 shadow-[0_0_18px_rgba(52,211,153,0.22)] transition hover:border-emerald-300/55 hover:bg-emerald-400/18 hover:shadow-[0_0_26px_rgba(52,211,153,0.34)]"
+          </Link>
+          <Link
+            href="/404"
+            className="rounded-full border border-emerald-400/45 bg-[linear-gradient(135deg,rgba(16,185,129,0.22),rgba(52,211,153,0.12))] px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 shadow-[0_0_20px_rgba(52,211,153,0.22)] transition duration-300 hover:border-emerald-300/65 hover:shadow-[0_0_32px_rgba(52,211,153,0.36)]"
           >
             Покупка токена
-          </a>
+          </Link>
         </div>
 
         <button
@@ -122,20 +126,20 @@ export function HeroNavbar() {
             </a>
           ))}
           <div className="mt-2 flex w-full flex-col gap-3">
-            <a
-              href="#site-footer"
-              className="rounded-full border border-white/10 bg-white/6 px-4 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-white/80 transition hover:bg-white/10 hover:text-white"
+            <Link
+              href="/404"
+              className="rounded-full border border-white/10 bg-[rgba(255,255,255,0.06)] px-4 py-3 text-center text-xs font-medium uppercase tracking-[0.18em] text-white/78 transition hover:border-white/18 hover:bg-white/10 hover:text-white"
               onClick={() => setIsOpen(false)}
             >
               Обратная связь
-            </a>
-            <a
-              href="#hero-video"
-              className="rounded-full border border-emerald-400/35 bg-emerald-400/14 px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 shadow-[0_0_18px_rgba(52,211,153,0.22)] transition hover:border-emerald-300/55 hover:bg-emerald-400/18 hover:shadow-[0_0_26px_rgba(52,211,153,0.34)]"
+            </Link>
+            <Link
+              href="/404"
+              className="rounded-full border border-emerald-400/45 bg-[linear-gradient(135deg,rgba(16,185,129,0.22),rgba(52,211,153,0.12))] px-4 py-3 text-center text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 shadow-[0_0_20px_rgba(52,211,153,0.22)] transition duration-300 hover:border-emerald-300/65 hover:shadow-[0_0_32px_rgba(52,211,153,0.36)]"
               onClick={() => setIsOpen(false)}
             >
               Покупка токена
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
