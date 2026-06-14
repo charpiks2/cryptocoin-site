@@ -44,11 +44,15 @@ export function HeroNavbar() {
             <a
               key={link.href}
               href={link.href}
-              className="group relative inline-flex h-7 items-center overflow-hidden rounded-full px-3 text-xs font-medium uppercase tracking-[0.18em] text-white/74 transition hover:bg-white/6 hover:text-white sm:px-4"
+              className="group relative inline-flex h-7 overflow-hidden rounded-full px-3 text-xs font-medium uppercase tracking-[0.18em] text-white/74 transition hover:bg-white/6 sm:px-4"
             >
-              <span className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
-                <span className="block leading-7">{link.label}</span>
-                <span className="block leading-7 text-white">{link.label}</span>
+              <span className="flex h-14 flex-col transition-transform duration-300 ease-out group-hover:-translate-y-7">
+                <span className="flex h-7 items-center text-white/74">
+                  {link.label}
+                </span>
+                <span className="flex h-7 items-center text-white">
+                  {link.label}
+                </span>
               </span>
             </a>
           ))}
