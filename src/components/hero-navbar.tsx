@@ -2,30 +2,11 @@
 
 import React, { useState } from "react";
 
-type AnimatedNavLinkProps = {
-  href: string;
-  children: React.ReactNode;
-};
-
 const navLinksData = [
   { label: "Философия", href: "#philosophy" },
   { label: "Цикл роста", href: "#growth-cycle" },
   { label: "FAQ", href: "#faq" },
 ];
-
-function AnimatedNavLink({ href, children }: AnimatedNavLinkProps) {
-  return (
-    <a
-      href={href}
-      className="group relative inline-flex h-6 items-center overflow-hidden text-xs font-medium uppercase tracking-[0.18em] text-white/72 sm:text-sm"
-    >
-      <div className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
-        <span className="block leading-6">{children}</span>
-        <span className="block leading-6 text-white">{children}</span>
-      </div>
-    </a>
-  );
-}
 
 export function HeroNavbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,11 +38,15 @@ export function HeroNavbar() {
           </div>
         </div>
 
-        <nav className="hidden items-center space-x-5 sm:flex">
+        <nav className="hidden items-center gap-2 sm:flex">
           {navLinksData.map((link) => (
-            <AnimatedNavLink key={link.href} href={link.href}>
+            <a
+              key={link.href}
+              href={link.href}
+              className="rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-white/80 transition hover:bg-white/10 hover:text-white"
+            >
               {link.label}
-            </AnimatedNavLink>
+            </a>
           ))}
         </nav>
 
