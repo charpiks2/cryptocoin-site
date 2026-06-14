@@ -78,7 +78,7 @@ export function GrowthCycleSection() {
                     activeStep === index && "cycle-step-active",
                   )}
                 >
-                  <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                  <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                     Step {index + 1}
                   </div>
                   <h3 className="mb-4 text-2xl font-semibold tracking-[-0.03em] text-white">
@@ -96,7 +96,7 @@ export function GrowthCycleSection() {
                   activeStep === 2 && "cycle-step-active",
                 )}
               >
-                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                   Step 3
                 </div>
                 <h3 className="mb-4 text-2xl font-semibold tracking-[-0.03em] text-white">
@@ -113,7 +113,7 @@ export function GrowthCycleSection() {
                   activeStep === 3 && "cycle-step-active",
                 )}
               >
-                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                   Step 4
                 </div>
                 <h3 className="mb-4 text-2xl font-semibold tracking-[-0.03em] text-white">
@@ -132,7 +132,7 @@ export function GrowthCycleSection() {
                   activeStep === 4 && "cycle-step-active",
                 )}
               >
-                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                   Step 5
                 </div>
                 <h3 className="mb-4 text-2xl font-semibold tracking-[-0.03em] text-white">
@@ -152,7 +152,7 @@ export function GrowthCycleSection() {
                   activeStep === index && "cycle-step-active",
                 )}
               >
-                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                   Step {index + 1}
                 </div>
                 <h3 className="mb-4 text-xl font-semibold tracking-[-0.03em] text-white">
@@ -174,7 +174,7 @@ export function GrowthCycleSection() {
                     activeStep === index && "cycle-step-active",
                   )}
                 >
-                  <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[var(--gold-bright)]">
+                  <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-white/50">
                     Step {index + 1}
                   </div>
                   <h3 className="mb-4 text-lg font-semibold tracking-[-0.03em] text-white">
