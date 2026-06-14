@@ -1,4 +1,5 @@
 import { DottedSurface } from "@/components/dotted-surface";
+import { HeroNavbar } from "@/components/hero-navbar";
 import { TypewriterHero } from "@/components/typewriter-hero";
 
 const youtubeEmbedUrl = process.env.NEXT_PUBLIC_YOUTUBE_EMBED_URL;
@@ -7,45 +8,12 @@ export function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden">
       <DottedSurface />
+      <HeroNavbar />
       <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_26%),linear-gradient(180deg,rgba(4,5,11,0.2),rgba(4,5,11,0.92)_70%,rgba(4,5,11,1))]" />
 
-      <div className="section-shell flex min-h-screen flex-col py-10 sm:py-12 lg:py-14">
-          <div className="sticky top-4 z-20 pb-10 sm:pb-12">
-            <nav className="glass-panel mx-auto flex w-full max-w-5xl flex-col items-center justify-between gap-4 rounded-[1.75rem] px-4 py-4 sm:px-5 lg:flex-row">
-              <div className="text-center lg:text-left">
-                <div className="text-sm font-semibold uppercase tracking-[0.28em] text-white/78">
-                  CryptoCoin
-                </div>
-                <div className="mt-1 text-xs uppercase tracking-[0.2em] text-white/45">
-                  premium rwa concept
-                </div>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-center gap-2">
-                <a
-                  href="#philosophy"
-                  className="rounded-full border border-white/10 bg-white px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-black transition hover:bg-white/90 sm:px-5"
-                >
-                  Философия
-                </a>
-                <a
-                  href="#growth-cycle"
-                  className="rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/10 sm:px-5"
-                >
-                  Цикл роста
-                </a>
-                <a
-                  href="#faq"
-                  className="rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/10 sm:px-5"
-                >
-                  FAQ
-                </a>
-              </div>
-            </nav>
-          </div>
-
-          <div className="flex flex-1 flex-col justify-center">
-            <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 text-center sm:gap-10">
+      <div className="section-shell flex min-h-screen flex-col py-24 sm:py-28 lg:py-32">
+        <div className="flex flex-1 flex-col justify-center">
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-8 text-center sm:gap-10">
               <TypewriterHero />
 
               <p className="max-w-3xl text-base leading-7 text-[var(--muted-foreground)] sm:text-lg sm:leading-8">
