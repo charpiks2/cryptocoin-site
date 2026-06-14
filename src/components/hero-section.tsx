@@ -1,4 +1,3 @@
-import { DottedSurface } from "@/components/dotted-surface";
 import { HeroNavbar } from "@/components/hero-navbar";
 import { TypewriterHero } from "@/components/typewriter-hero";
 
@@ -7,9 +6,7 @@ const youtubeEmbedUrl = process.env.NEXT_PUBLIC_YOUTUBE_EMBED_URL;
 export function HeroSection() {
   return (
     <section className="relative min-h-screen overflow-hidden">
-      <DottedSurface />
       <HeroNavbar />
-      <div className="absolute inset-0 -z-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_26%),linear-gradient(180deg,rgba(4,5,11,0.2),rgba(4,5,11,0.92)_70%,rgba(4,5,11,1))]" />
 
       <div className="section-shell flex min-h-screen flex-col py-24 sm:py-28 lg:py-32">
         <div className="flex flex-1 flex-col justify-center">
@@ -26,7 +23,10 @@ export function HeroSection() {
                 Real-world asset concept · Live transparency · 24/7
               </span>
 
-              <div className="hero-video-frame glass-panel w-full overflow-hidden rounded-[2rem] p-3 sm:p-4 lg:p-5">
+              <div
+                id="hero-video"
+                className="hero-video-frame glass-panel w-full overflow-hidden rounded-[2rem] p-3 sm:p-4 lg:p-5"
+              >
                 <div className="mb-3 flex items-center justify-between gap-3 px-2 py-1 text-left text-xs uppercase tracking-[0.24em] text-white/58 sm:px-3">
                   <span>Live reserve stream</span>
                   <span className="inline-flex items-center gap-2 text-white/70">

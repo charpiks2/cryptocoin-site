@@ -89,7 +89,7 @@ export function SupportSections() {
         </div>
       </section>
 
-      <footer className="relative border-t border-white/8 py-10">
+      <footer id="site-footer" className="relative border-t border-white/8 py-10">
         <div className="section-shell">
           <div className="mx-auto flex max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
