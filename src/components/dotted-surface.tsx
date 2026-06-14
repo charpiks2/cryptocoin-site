@@ -17,6 +17,7 @@ export function DottedSurface({
     scene: THREE.Scene;
     camera: THREE.PerspectiveCamera;
     renderer: THREE.WebGLRenderer;
+    animationId: number;
   } | null>(null);
 
   useEffect(() => {
@@ -88,23 +89,32 @@ export function DottedSurface({
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    const positionAttribute = geometry.attributes.position;
-    const positionArray = positionAttribute.array as Float32Array;
-
-    let i = 0;
-    for (let ix = 0; ix < amountX; ix += 1) {
-      for (let iy = 0; iy < amountY; iy += 1) {
-        const index = i * 3;
-        positionArray[index + 1] =
-          Math.sin(ix * 0.3) * 50 + Math.sin(iy * 0.5) * 50;
-        i += 1;
-      }
-    }
-
-    positionAttribute.needsUpdate = true;
+    let count = 0;
+    let animationId = 0;
 
     const renderScene = () => {
+      const positionAttribute = geometry.attributes.position;
+      const positionArray = positionAttribute.array as Float32Array;
+
+      let i = 0;
+      for (let ix = 0; ix < amountX; ix += 1) {
+        for (let iy = 0; iy < amountY; iy += 1) {
+          const index = i * 3;
+          positionArray[index + 1] =
+            Math.sin((ix + count) * 0.3) * 50 +
+            Math.sin((iy + count) * 0.5) * 50;
+          i += 1;
+        }
+      }
+
+      positionAttribute.needsUpdate = true;
       renderer.render(scene, camera);
+    };
+
+    const animate = () => {
+      animationId = requestAnimationFrame(animate);
+      renderScene();
+      count += 0.1;
     };
 
     const handleResize = () => {
@@ -115,12 +125,13 @@ export function DottedSurface({
     };
 
     window.addEventListener("resize", handleResize);
-    renderScene();
+    animate();
 
     sceneRef.current = {
       scene,
       camera,
       renderer,
+      animationId,
     };
 
     return () => {
@@ -129,6 +140,8 @@ export function DottedSurface({
       if (!sceneRef.current) {
         return;
       }
+
+      cancelAnimationFrame(animationId);
 
       sceneRef.current.scene.traverse((object) => {
         if (!(object instanceof THREE.Points)) {
